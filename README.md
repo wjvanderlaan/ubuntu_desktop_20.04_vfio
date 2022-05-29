@@ -1,5 +1,11 @@
 # ubuntu_desktop_20.04_vfio
 
+    #################################################################################################  
+    #  Scope :                                                                                      #  
+    #  Ubuntu 20.04 Desptop and an NVIDIA GTX 960 to be used in a QEMU/KVM Windows virtual machine  #  
+    #  Goal is to use the graphics card capabilities in Autodesk Fusion 360                         #  
+    #################################################################################################
+
 First add parameters to /etc/default/grub:
 
   AMD based :

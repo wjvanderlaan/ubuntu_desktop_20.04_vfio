@@ -4,6 +4,7 @@
     #  Scope :                                                                                      #  
     #  Ubuntu 20.04 Desptop and an NVIDIA GTX 960 to be used in a QEMU/KVM Windows virtual machine  #  
     #  Goal is to use the graphics card capabilities in Autodesk Fusion 360                         #  
+    #  An additional graphics card is required for the "hypervisor" O.S.                            #  
     #################################################################################################
 
 First add parameters to /etc/default/grub:
@@ -19,6 +20,8 @@ First add parameters to /etc/default/grub:
 Then reboot the system.
 
      reboot
+
+Check dmesg if iommu is enabled/active.
 
 Isolate nvidia graphics card (GTX 960), find the pci bus addresses:
 
@@ -36,7 +39,6 @@ Add the pci addresses to the DEVS array:
     #!/bin/sh
     
     DEVS="0000:01:00.0 0000:01:00.1"
-    # "0000:09:00.0 0000:09:00.1"
     
     if [ ! -z "$(ls -A /sys/class/iommu)" ]; then
         for DEV in $DEVS; do
